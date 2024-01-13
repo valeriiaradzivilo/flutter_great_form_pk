@@ -1,7 +1,7 @@
 name: great_form
-description: "A new Flutter package project."
+description: "A new Flutter package with a custom Form."
 version: 0.0.1
-homepage:
+homepage: https://github.com/valeriiaradzivilo/flutter_great_form_pk
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
