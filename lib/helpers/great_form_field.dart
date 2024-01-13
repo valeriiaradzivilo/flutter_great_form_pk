@@ -31,7 +31,7 @@ class _GreatFormFieldState extends State<GreatFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller,
+      controller: widget.controller ?? TextEditingController(),
       decoration: InputDecoration(label: GreatText(widget.hintText)),
       autovalidateMode: widget.validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
       inputFormatters: widget.validator != Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,

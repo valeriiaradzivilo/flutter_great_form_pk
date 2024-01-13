@@ -1,6 +1,6 @@
 name: great_form
-description: "A new Flutter package with a custom Form."
-version: 0.0.2
+description: "Flutter package with a custom Form widget."
+version: 0.0.3
 homepage: https://github.com/valeriiaradzivilo/flutter_great_form_pk
 
 environment:
@@ -16,9 +16,5 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 

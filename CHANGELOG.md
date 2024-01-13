@@ -5,3 +5,8 @@
 ## 0.0.2
 
 * Added custom fields and validation
+
+## 0.0.3
+
+* Added example
+* Bugfix
