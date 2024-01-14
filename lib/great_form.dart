@@ -7,7 +7,11 @@ import 'package:great_form/helpers/great_form_field.dart';
 /// Predefined [gap] is 10
 class GreatForm extends StatefulWidget {
   const GreatForm({super.key, required this.fields, this.gap = 10});
+
+  /// Input fields
   final List<GreatFormField> fields;
+
+  /// Distance between fields
   final double? gap;
 
   @override

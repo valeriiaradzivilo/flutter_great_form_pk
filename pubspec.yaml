@@ -1,6 +1,6 @@
 name: great_form
 description: "Flutter package with a custom Form widget. Enables you not to write repetitive code for your screen forms."
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/valeriiaradzivilo/flutter_great_form_pk
 
 environment:

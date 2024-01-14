@@ -47,8 +47,9 @@ class MyHomePage extends StatelessWidget {
           children: [
             GreatForm(fields: _fields),
             Expanded(
-                child:
-                    ScrollableForm.horizontal(builder: (context, index) => _fields[index], childCount: _fields.length)),
+                child: ScrollableForm.horizontal(
+                    builder: (context, index) => _fields[index],
+                    childCount: _fields.length)),
           ],
         ),
       ),

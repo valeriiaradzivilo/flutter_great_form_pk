@@ -15,3 +15,7 @@
 * Added example
 * Bugfix
 * Created a test
+
+## 0.0.5
+
+* Added ScrollableForm

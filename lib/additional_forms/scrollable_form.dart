@@ -23,14 +23,19 @@ class ScrollableForm extends StatefulWidget {
     double? gap,
     required int childCount,
   }) =>
-      ScrollableForm(builder: builder, childCount: childCount, isVertical: true, gap: gap);
+      ScrollableForm(
+          builder: builder, childCount: childCount, isVertical: true, gap: gap);
 
   factory ScrollableForm.horizontal({
     required GreatFormField Function(BuildContext context, int index) builder,
     double? gap,
     required int childCount,
   }) =>
-      ScrollableForm(builder: builder, childCount: childCount, isVertical: false, gap: gap);
+      ScrollableForm(
+          builder: builder,
+          childCount: childCount,
+          isVertical: false,
+          gap: gap);
 
   @override
   State<ScrollableForm> createState() => _ScrollableFormState();
@@ -45,7 +50,8 @@ class _ScrollableFormState extends State<ScrollableForm> {
         child: ListView.separated(
           scrollDirection: widget.isVertical ? Axis.vertical : Axis.horizontal,
           itemBuilder: widget.builder,
-          separatorBuilder: (_, __) => SizedBox(width: widget.gap ?? 10, height: widget.gap ?? 10),
+          separatorBuilder: (_, __) =>
+              SizedBox(width: widget.gap ?? 10, height: widget.gap ?? 10),
           itemCount: widget.childCount,
         ));
   }

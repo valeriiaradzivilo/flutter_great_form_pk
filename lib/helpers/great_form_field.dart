@@ -13,10 +13,19 @@ class GreatFormField extends StatelessWidget {
     this.expand = false,
   });
 
+  /// Controller to get values from later
   final TextEditingController? controller;
+
+  /// Text that will take place until the input
   final String? hintText;
+
+  /// Validate on user input or never
   final bool validateOnInput;
+
+  /// Type of predefined validator
   final Validator validator;
+
+  /// Expand on input
   final bool expand;
 
   @override
@@ -28,8 +37,12 @@ class GreatFormField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             decoration: InputDecoration(label: GreatText(hintText)),
-            autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-            inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+            autovalidateMode: validateOnInput
+                ? AutovalidateMode.onUserInteraction
+                : AutovalidateMode.disabled,
+            inputFormatters: validator == Validator.digitsOnly
+                ? [FilteringTextInputFormatter.digitsOnly]
+                : null,
             validator: validator.validate,
             maxLines: expand ? null : 1,
             minLines: 1,

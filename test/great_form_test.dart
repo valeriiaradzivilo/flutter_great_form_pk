@@ -41,7 +41,8 @@ void main() {
       MaterialApp(
         home: Scaffold(
           body: ScrollableForm(
-            builder: (context, index) => GreatFormField(hintText: 'Item $index'),
+            builder: (context, index) =>
+                GreatFormField(hintText: 'Item $index'),
             gap: 10,
             childCount: 5,
             isVertical: true,
