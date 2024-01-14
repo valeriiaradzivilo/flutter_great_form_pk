@@ -22,8 +22,12 @@ class GreatFormField extends TextFormField {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(label: GreatText(hintText)),
-      autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-      inputFormatters: validatorType == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+      autovalidateMode: validateOnInput
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      inputFormatters: validatorType == Validator.digitsOnly
+          ? [FilteringTextInputFormatter.digitsOnly]
+          : null,
       validator: validatorType.validate,
       maxLines: expand ? null : 1,
       minLines: 1,

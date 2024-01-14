@@ -7,7 +7,8 @@ enum Validator {
   none;
 
   String? validate(String? text) => switch (this) {
-        notEmpty => (text?.isEmpty ?? true) ? 'Do no forget to fill in this field' : null,
+        notEmpty =>
+          (text?.isEmpty ?? true) ? 'Do no forget to fill in this field' : null,
         email => _email(text),
         password => _password(text),
         passwordComplex => _passwordComplex(text),

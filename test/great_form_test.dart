@@ -14,7 +14,7 @@ void main() {
             controller: TextEditingController(),
             hintText: 'Enter text',
             validateOnInput: true,
-            validator: Validator.none,
+            validatorType: Validator.none,
             expand: false,
           ),
         ),

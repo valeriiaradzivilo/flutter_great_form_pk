@@ -23,7 +23,8 @@ class _GreatFormState extends State<GreatForm> {
         key: _formKey,
         child: ListView.separated(
           itemBuilder: (context, index) => widget.fields[index],
-          separatorBuilder: (_, __) => SizedBox(width: widget.gap, height: widget.gap),
+          separatorBuilder: (_, __) =>
+              SizedBox(width: widget.gap, height: widget.gap),
           itemCount: widget.fields.length,
           shrinkWrap: true,
         ));
