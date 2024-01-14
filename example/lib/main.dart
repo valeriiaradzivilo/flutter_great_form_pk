@@ -32,16 +32,20 @@ class MyHomePage extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: GreatForm(fields: [
-            GreatFormField(
-              hintText: 'Email',
-              validator: Validator.password,
-            ),
-            GreatFormField(
-              hintText: 'Password',
-              validator: Validator.password,
-            ),
-          ]),
+          child: Column(
+            children: [
+              GreatForm(fields: [
+                GreatFormField(
+                  hintText: 'Email',
+                  validator: Validator.password,
+                ),
+                GreatFormField(
+                  hintText: 'Password',
+                  validator: Validator.password,
+                ),
+              ]),
+            ],
+          ),
         ),
       ),
     );
