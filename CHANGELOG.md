@@ -8,5 +8,10 @@
 
 ## 0.0.3
 
+* Bugfix
+
+## 0.0.4
+
 * Added example
 * Bugfix
+* Created a test

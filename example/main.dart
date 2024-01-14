@@ -29,19 +29,24 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: GreatForm(fields: [
-            GreatFormField(
-              hintText: 'Email',
-              validator: Validator.password,
-            ),
-            GreatFormField(
-              hintText: 'Password',
-              validator: Validator.password,
-            ),
-          ]),
+          child: Column(
+            children: [
+              const GreatForm(fields: [
+                GreatFormField(
+                  hintText: 'Email',
+                  validator: Validator.email,
+                ),
+                GreatFormField(
+                  hintText: 'Password',
+                  validator: Validator.password,
+                ),
+              ]),
+              TextFormField(),
+            ],
+          ),
         ),
       ),
     );

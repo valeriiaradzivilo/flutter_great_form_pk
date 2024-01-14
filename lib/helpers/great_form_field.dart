@@ -4,13 +4,15 @@ import 'package:great_form/helpers/great_text.dart';
 import 'package:great_form/helpers/validator.dart';
 
 class GreatFormField extends StatefulWidget {
-  const GreatFormField(
-      {super.key,
-      this.controller,
-      this.hintText,
-      this.validateOnInput = true,
-      this.validator = Validator.none,
-      this.expand = false});
+  const GreatFormField({
+    Key? key, // Fix: Use Key? key instead of super.key
+    this.controller,
+    this.hintText,
+    this.validateOnInput = true,
+    this.validator = Validator.none,
+    this.expand = false,
+  }) : super(key: key); // Fix: Use Key? key
+
   final TextEditingController? controller;
   final String? hintText;
   final bool validateOnInput;
@@ -31,10 +33,10 @@ class _GreatFormFieldState extends State<GreatFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller ?? TextEditingController(),
+      controller: widget.controller,
       decoration: InputDecoration(label: GreatText(widget.hintText)),
       autovalidateMode: widget.validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-      inputFormatters: widget.validator != Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+      inputFormatters: widget.validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
       validator: widget.validator.validate,
       maxLines: widget.expand ? null : 1,
       minLines: 1,

@@ -18,6 +18,7 @@ class _GreatFormState extends State<GreatForm> {
   Widget build(BuildContext context) {
     return Form(
         key: _formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: ListView.separated(
           itemBuilder: (context, index) => widget.fields[index],
           separatorBuilder: (_, __) => SizedBox(width: widget.gap ?? 10, height: widget.gap ?? 10),
