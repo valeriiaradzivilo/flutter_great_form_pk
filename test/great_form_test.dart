@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:great_form/additional_forms/scrollable_form.dart';
 import 'package:great_form/helpers/great_form_field.dart';
 import 'package:great_form/helpers/validator.dart';
 
@@ -32,5 +33,28 @@ void main() {
 
     // Verify that the text is visible
     expect(find.text('This is the text'), findsOneWidget);
+  });
+
+  testWidgets('ScrollableForm renders correctly', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ScrollableForm(
+            builder: (context, index) => GreatFormField(hintText: 'Item $index'),
+            gap: 10,
+            childCount: 5,
+            isVertical: true,
+          ),
+        ),
+      ),
+    );
+
+    // Verify if the widgets are rendered correctly
+    expect(find.text('Item 0'), findsOneWidget);
+    expect(find.text('Item 1'), findsOneWidget);
+    expect(find.text('Item 2'), findsOneWidget);
+    expect(find.text('Item 3'), findsOneWidget);
+    expect(find.text('Item 4'), findsOneWidget);
   });
 }

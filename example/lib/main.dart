@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:great_form/additional_forms/scrollable_form.dart';
 import 'package:great_form/great_form.dart';
 import 'package:great_form/helpers/great_form_field.dart';
 import 'package:great_form/helpers/validator.dart';
@@ -24,26 +25,32 @@ class MyApp extends StatelessWidget {
   }
 }
 
+final List<GreatFormField> _fields = [
+  const GreatFormField(
+    hintText: 'Email',
+    validator: Validator.password,
+  ),
+  const GreatFormField(
+    hintText: 'Password',
+    validator: Validator.password,
+  ),
+];
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              GreatForm(fields: [
-                GreatFormField(
-                  hintText: 'Email',
-                  validator: Validator.password,
-                ),
-                GreatFormField(
-                  hintText: 'Password',
-                  validator: Validator.password,
-                ),
-              ]),
+              GreatForm(fields: _fields),
+              SizedBox(
+                  width: 100,
+                  child: ScrollableForm.horizontal(
+                      builder: (context, index) => _fields[index], childCount: _fields.length)),
             ],
           ),
         ),

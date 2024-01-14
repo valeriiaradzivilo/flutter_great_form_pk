@@ -5,8 +5,14 @@ import 'package:great_form/helpers/great_form_field.dart';
 /// [ScrollableForm] is a [GreatForm] but with the ability to be scrollable
 /// 2 factory constructors [ScrollableForm.vertical] and [ScrollableForm.horizontal] define [isVertical] parameter
 class ScrollableForm extends StatefulWidget {
-  const ScrollableForm(
-      {super.key, required this.builder, this.gap, required this.childCount, required this.isVertical});
+  const ScrollableForm({
+    super.key,
+    required this.builder,
+    this.gap,
+    required this.childCount,
+    required this.isVertical,
+  });
+
   final GreatFormField Function(BuildContext context, int index) builder;
   final double? gap;
   final int childCount;
