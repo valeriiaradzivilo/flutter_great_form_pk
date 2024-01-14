@@ -9,14 +9,14 @@ class GreatFormField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.validateOnInput = true,
-    this.validatorType = Validator.none,
+    this.validator = Validator.none,
     this.expand = false,
   });
 
   final TextEditingController? controller;
   final String? hintText;
   final bool validateOnInput;
-  final Validator validatorType;
+  final Validator validator;
   final bool expand;
 
   @override
@@ -25,8 +25,8 @@ class GreatFormField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(label: GreatText(hintText)),
       autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-      inputFormatters: validatorType == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-      validator: validatorType.validate,
+      inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+      validator: validator.validate,
       maxLines: expand ? null : 1,
       minLines: 1,
     );
