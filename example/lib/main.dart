@@ -43,16 +43,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              GreatForm(fields: _fields),
-              SizedBox(
-                  width: 100,
-                  child: ScrollableForm.horizontal(
-                      builder: (context, index) => _fields[index], childCount: _fields.length)),
-            ],
-          ),
+        child: Column(
+          children: [
+            GreatForm(fields: _fields),
+            Expanded(
+                child:
+                    ScrollableForm.horizontal(builder: (context, index) => _fields[index], childCount: _fields.length)),
+          ],
         ),
       ),
     );

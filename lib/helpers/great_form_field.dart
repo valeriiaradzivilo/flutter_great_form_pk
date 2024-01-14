@@ -21,16 +21,19 @@ class GreatFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: IntrinsicWidth(
-        child: TextFormField(
-          controller: controller,
-          decoration: InputDecoration(label: GreatText(hintText)),
-          autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-          inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-          validator: validator.validate,
-          maxLines: expand ? null : 1,
-          minLines: 1,
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 100),
+      child: IntrinsicHeight(
+        child: IntrinsicWidth(
+          child: TextFormField(
+            controller: controller,
+            decoration: InputDecoration(label: GreatText(hintText)),
+            autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
+            inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+            validator: validator.validate,
+            maxLines: expand ? null : 1,
+            minLines: 1,
+          ),
         ),
       ),
     );
