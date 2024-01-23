@@ -11,7 +11,6 @@ class GreatPhoneFormField extends StatefulWidget {
 }
 
 class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
-  List<CountryCode> _countryCody = [];
   String? chosenCode;
   @override
   void initState() {
@@ -21,40 +20,47 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CountryCode>>(
-      future: Future(() async {
-        final GetCountryPhoneUseCase getCountryPhoneUseCase = GetCountryPhoneUseCase();
-        final getCountriesResult = await getCountryPhoneUseCase(null);
-        if (getCountriesResult.isRight) {
-          return _countryCody = getCountriesResult.asRight();
-        }
-        return [];
-      }),
-      initialData: const [],
-      builder: (context, snapshot) => Row(
-        children: [
-          InkWell(
-            onTap: () => showModalBottomSheet(
-                context: context,
-                builder: (_) => _PhonePickerModalSheet(
-                      countryCody: _countryCody,
-                    )),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(chosenCode ?? 'Select country'),
-            ),
-          ),
-          Expanded(
-            child: TextFormField(
-              controller: widget.controller,
-            ),
-          )
-        ],
-      ),
-    );
+        future: Future(() async {
+          final GetCountryPhoneUseCase getCountryPhoneUseCase = GetCountryPhoneUseCase();
+          final getCountriesResult = await getCountryPhoneUseCase(null);
+          if (getCountriesResult.isRight) {
+            return getCountriesResult.asRight();
+          }
+          return [];
+        }),
+        initialData: const [],
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Row(
+              children: [
+                InkWell(
+                  onTap: () => showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      useSafeArea: true,
+                      builder: (_) => _PhonePickerModalSheet(
+                            countryCody: snapshot.requireData,
+                          )),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(chosenCode ?? 'Select country'),
+                  ),
+                ),
+                Expanded(
+                  child: TextFormField(
+                    controller: widget.controller,
+                  ),
+                )
+              ],
+            );
+          } else {
+            return const Text('No data found in the api.');
+          }
+        });
   }
 }
 
@@ -65,6 +71,7 @@ class _PhonePickerModalSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: const EdgeInsets.all(8),
       child: Column(children: [
         const Text('Country + code'),
         for (final country in countryCody)

@@ -35,13 +35,13 @@ class GreatFormField extends StatelessWidget {
       assert(controller != null);
     }
 
-    return IntrinsicHeight(
-      child: IntrinsicWidth(
-          child: switch (validator) {
-        Validator.phone => GreatPhoneFormField(controller: controller!),
-        _ => Container(
-            constraints: const BoxConstraints(maxWidth: 100),
-            child: TextFormField(
+    return ConstrainedBox(
+      constraints: BoxConstraints(minWidth: (hintText?.length ?? 1) * 5),
+      child: IntrinsicHeight(
+        child: IntrinsicWidth(
+            child: switch (validator) {
+          Validator.phone => GreatPhoneFormField(controller: controller!),
+          _ => TextFormField(
               controller: controller,
               decoration: InputDecoration(label: GreatText(hintText)),
               autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
@@ -50,8 +50,8 @@ class GreatFormField extends StatelessWidget {
               maxLines: expand ? null : 1,
               minLines: 1,
             ),
-          ),
-      }),
+        }),
+      ),
     );
   }
 }
