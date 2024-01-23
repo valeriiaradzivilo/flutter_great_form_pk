@@ -4,15 +4,16 @@ enum Validator {
   password,
   passwordComplex,
   digitsOnly,
+  phone,
   none;
 
   String? validate(String? text) => switch (this) {
-        notEmpty =>
-          (text?.isEmpty ?? true) ? 'Do no forget to fill in this field' : null,
+        notEmpty => (text?.isEmpty ?? true) ? 'Do no forget to fill in this field' : null,
         email => _email(text),
         password => _password(text),
         passwordComplex => _passwordComplex(text),
         digitsOnly => _digitsOnly(text),
+        phone => _digitsOnly(text),
         none => null,
       };
 }
@@ -56,7 +57,7 @@ String? _passwordComplex(String? password) {
   } else if (!digitsRegExp.hasMatch(password)) {
     return 'Password must contain at least one digit';
   } else if (!charactersRegExp.hasMatch(password)) {
-    return 'Password must contain at leat one special character among @,!,_.';
+    return 'Password must contain at least one special character among @,!,_.';
   } else if (forbiddenCharactersRegExp.hasMatch(password)) {
     return 'Password contains forbidden character';
   }

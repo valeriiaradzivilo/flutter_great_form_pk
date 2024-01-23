@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:great_form/additional_forms/scrollable_form.dart';
+import 'package:great_form/form_field/great_form_field.dart';
 import 'package:great_form/great_form.dart';
-import 'package:great_form/helpers/great_form_field.dart';
 import 'package:great_form/helpers/validator.dart';
 
 void main() {
@@ -33,6 +33,10 @@ final List<GreatFormField> _fields = [
   const GreatFormField(
     hintText: 'Password',
     validator: Validator.password,
+  ),
+  const GreatFormField(
+    hintText: 'phone number',
+    validator: Validator.phone,
   ),
 ];
 
