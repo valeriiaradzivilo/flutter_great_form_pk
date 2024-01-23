@@ -36,7 +36,7 @@ class GreatFormField extends StatelessWidget {
     }
 
     return ConstrainedBox(
-      constraints: BoxConstraints(minWidth: (hintText?.length ?? 1) * 5),
+      constraints: BoxConstraints(minWidth: (hintText?.length ?? 1) * 10),
       child: IntrinsicHeight(
         child: IntrinsicWidth(
             child: switch (validator) {

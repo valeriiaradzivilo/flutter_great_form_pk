@@ -7,19 +7,19 @@ class CountryCode {
   CountryCode({
     required this.name,
     required this.phoneCode,
-    required this.svgFlag,
+    required this.flagLink,
   });
 
   final CountryName name;
   final PhoneCode phoneCode;
-  final String? svgFlag;
+  final String? flagLink;
 
   // Create an instance from a Map
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
       name: CountryName.fromJson(json['name']),
       phoneCode: PhoneCode.fromJson(json['idd']),
-      svgFlag: json['flags']?['svg'] as String?,
+      flagLink: json['flags']?['png'] as String?,
     );
   }
 

@@ -90,7 +90,7 @@ class _CountryCodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(countryCode.svgFlag ?? ''),
+      leading: countryCode.flagLink != null ? Image.network(countryCode.flagLink!) : null,
       title: Text(phoneCode),
       subtitle: Text(countryCode.name.common),
     );
