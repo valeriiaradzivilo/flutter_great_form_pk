@@ -34,7 +34,8 @@ final List<GreatFormField> _fields = [
     hintText: 'Password',
     validator: Validator.password,
   ),
-  const GreatFormField(
+  GreatFormField(
+    controller: TextEditingController(),
     hintText: 'phone number',
     validator: Validator.phone,
   ),

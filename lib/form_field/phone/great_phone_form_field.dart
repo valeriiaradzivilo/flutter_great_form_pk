@@ -14,38 +14,44 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
   List<CountryCode> _countryCody = [];
   String? chosenCode;
   @override
-  void initState() async {
-    final GetCountryPhoneUseCase getCountryPhoneUseCase = GetCountryPhoneUseCase();
-    final getCountriesResult = await getCountryPhoneUseCase(null);
-    if (getCountriesResult.isRight) {
-      _countryCody = getCountriesResult.asRight();
-    }
+  void initState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () => showModalBottomSheet(
-              context: context,
-              builder: (_) => _PhonePickerModalSheet(
-                    countryCody: _countryCody,
-                  )),
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(20),
+    return FutureBuilder<List<CountryCode>>(
+      future: Future(() async {
+        final GetCountryPhoneUseCase getCountryPhoneUseCase = GetCountryPhoneUseCase();
+        final getCountriesResult = await getCountryPhoneUseCase(null);
+        if (getCountriesResult.isRight) {
+          return _countryCody = getCountriesResult.asRight();
+        }
+        return [];
+      }),
+      initialData: const [],
+      builder: (context, snapshot) => Row(
+        children: [
+          InkWell(
+            onTap: () => showModalBottomSheet(
+                context: context,
+                builder: (_) => _PhonePickerModalSheet(
+                      countryCody: _countryCody,
+                    )),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(chosenCode ?? 'Select country'),
             ),
-            child: Text(chosenCode ?? 'Select country'),
           ),
-        ),
-        TextFormField(
-          controller: widget.controller,
-        )
-      ],
+          TextFormField(
+            controller: widget.controller,
+          )
+        ],
+      ),
     );
   }
 }
