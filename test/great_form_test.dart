@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:great_form/additional_forms/scrollable_form.dart';
-import 'package:great_form/helpers/great_form_field.dart';
+import 'package:great_form/form_field/great_form_field.dart';
 import 'package:great_form/helpers/validator.dart';
 
 void main() {
@@ -41,8 +41,7 @@ void main() {
       MaterialApp(
         home: Scaffold(
           body: ScrollableForm(
-            builder: (context, index) =>
-                GreatFormField(hintText: 'Item $index'),
+            builder: (context, index) => GreatFormField(hintText: 'Item $index'),
             gap: 10,
             childCount: 5,
             isVertical: true,

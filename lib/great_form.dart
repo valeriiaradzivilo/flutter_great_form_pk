@@ -1,7 +1,7 @@
 library great_form;
 
 import 'package:flutter/material.dart';
-import 'package:great_form/helpers/great_form_field.dart';
+import 'package:great_form/form_field/great_form_field.dart';
 
 /// [GreatForm] is a shortened version of a basic form with modifiable [gap] and [fields]
 /// Predefined [gap] is 10
@@ -27,8 +27,7 @@ class _GreatFormState extends State<GreatForm> {
         key: _formKey,
         child: ListView.separated(
           itemBuilder: (context, index) => widget.fields[index],
-          separatorBuilder: (_, __) =>
-              SizedBox(width: widget.gap, height: widget.gap),
+          separatorBuilder: (_, __) => SizedBox(width: widget.gap, height: widget.gap),
           itemCount: widget.fields.length,
           shrinkWrap: true,
         ));
