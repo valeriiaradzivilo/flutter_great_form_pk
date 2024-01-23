@@ -80,7 +80,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "55e8058766da53cf7bcae5e272f75038f1e0c1ab"
+      resolved-ref: "8f0fed4df5a48bee10270b1617d0217ca781b0f4"
       url: "https://github.com/valeriiaradzivilo/flutter_great_form_pk.git"
     source: git
     version: "0.0.5"

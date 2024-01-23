@@ -19,7 +19,7 @@ class CountryCode {
     return CountryCode(
       name: CountryName.fromJson(json['name']),
       phoneCode: PhoneCode.fromJson(json['idd']),
-      svgFlag: json['flags']['png'] as String?,
+      svgFlag: json['flags']?['svg'] as String?,
     );
   }
 
