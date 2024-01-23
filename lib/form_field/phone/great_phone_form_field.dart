@@ -47,8 +47,10 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
               child: Text(chosenCode ?? 'Select country'),
             ),
           ),
-          TextFormField(
-            controller: widget.controller,
+          Expanded(
+            child: TextFormField(
+              controller: widget.controller,
+            ),
           )
         ],
       ),
