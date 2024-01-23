@@ -90,7 +90,15 @@ class _CountryCodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: countryCode.flagLink != null ? Image.network(countryCode.flagLink!) : null,
+      leading: countryCode.flagLink != null
+          ? Image.network(
+              countryCode.flagLink!,
+              errorBuilder: (context, error, stackTrace) {
+                print('Image load failed: $error');
+                return const SizedBox();
+              },
+            )
+          : null,
       title: Text(phoneCode),
       subtitle: Text(countryCode.name.common),
     );
