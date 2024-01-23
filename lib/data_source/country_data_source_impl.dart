@@ -8,7 +8,7 @@ const _baseUrl = 'https://restcountries.com/v3.1/all';
 
 const _fieldName = 'name';
 const _fieldIdd = 'idd';
-const _fieldFlag = 'flag';
+const _fieldFlag = 'flags';
 
 const _fieldSelector = '?fields=';
 
