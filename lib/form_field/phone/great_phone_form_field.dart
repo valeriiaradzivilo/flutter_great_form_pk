@@ -38,8 +38,9 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
                       context: context,
                       isScrollControlled: true,
                       useSafeArea: true,
+                      showDragHandle: true,
                       builder: (_) => _PhonePickerModalSheet(
-                            countryCody: snapshot.requireData,
+                            countryCode: snapshot.requireData,
                           )),
                   child: Container(
                     padding: const EdgeInsets.all(8),
@@ -65,18 +66,28 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
 }
 
 class _PhonePickerModalSheet extends StatelessWidget {
-  const _PhonePickerModalSheet({required this.countryCody});
-  final List<CountryCode> countryCody;
+  const _PhonePickerModalSheet({required this.countryCode});
+  final List<CountryCode> countryCode;
 
   @override
   Widget build(BuildContext context) {
+    final extendedCountryCodes =
+        countryCode.expand((country) => country.phoneCode.suffixes.map((phone) => (country, phone))).toList();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(8),
       child: Column(children: [
-        const Text('Country + code'),
-        for (final country in countryCody)
-          for (final phone in country.phoneCode.suffixes)
-            _CountryCodeWidget(countryCode: country, phoneCode: country.phoneCode.root + phone)
+        const Text(
+          'Country + code',
+          style: TextStyle(fontSize: 16),
+        ),
+        ListView.builder(
+          shrinkWrap: true,
+          itemBuilder: (context, index) => _CountryCodeWidget(
+              countryCode: extendedCountryCodes[index].$1,
+              phoneCode: extendedCountryCodes[index].$1.phoneCode.root + extendedCountryCodes[index].$2),
+          itemCount: extendedCountryCodes.length,
+        )
       ]),
     );
   }
@@ -97,10 +108,16 @@ class _CountryCodeWidget extends StatelessWidget {
                 print('Image load failed: $error');
                 return const SizedBox();
               },
+              width: 100,
+              height: 100,
             )
           : null,
       title: Text(phoneCode),
-      subtitle: Text(countryCode.name.common),
+      subtitle: Flexible(
+          child: Text(
+        countryCode.name.common,
+        overflow: TextOverflow.ellipsis,
+      )),
     );
   }
 }
