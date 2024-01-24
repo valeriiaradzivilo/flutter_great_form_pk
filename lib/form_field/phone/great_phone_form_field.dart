@@ -79,14 +79,15 @@ class _PhonePickerModalSheet extends StatelessWidget {
       child: Column(children: [
         const Text(
           'Country + code',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          itemBuilder: (context, index) => _CountryCodeWidget(
-              countryCode: extendedCountryCodes[index].$1,
-              phoneCode: extendedCountryCodes[index].$1.phoneCode.root + extendedCountryCodes[index].$2),
-          itemCount: extendedCountryCodes.length,
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (context, index) => _CountryCodeWidget(
+                countryCode: extendedCountryCodes[index].$1,
+                phoneCode: extendedCountryCodes[index].$1.phoneCode.root + extendedCountryCodes[index].$2),
+            itemCount: extendedCountryCodes.length,
+          ),
         )
       ]),
     );
@@ -108,7 +109,7 @@ class _CountryCodeWidget extends StatelessWidget {
                 print('Image load failed: $error');
                 return const SizedBox();
               },
-              width: 100,
+              width: 50,
               height: 100,
             )
           : null,
