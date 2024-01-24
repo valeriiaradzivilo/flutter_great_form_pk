@@ -74,8 +74,8 @@ class _PhonePickerModalSheet extends StatelessWidget {
     final extendedCountryCodes =
         countryCode.expand((country) => country.phoneCode.suffixes.map((phone) => (country, phone))).toList();
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(children: [
         const Text(
           'Country + code',
