@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:great_form/additional_forms/scrollable_form.dart';
 import 'package:great_form/form_field/great_form_field.dart';
 import 'package:great_form/great_form.dart';
 import 'package:great_form/helpers/validator.dart';
@@ -51,9 +50,9 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: [
             GreatForm(fields: _fields),
-            Expanded(
-                child:
-                    ScrollableForm.horizontal(builder: (context, index) => _fields[index], childCount: _fields.length)),
+            // Expanded(
+            //     child:
+            //         ScrollableForm.horizontal(builder: (context, index) => _fields[index], childCount: _fields.length)),
           ],
         ),
       ),

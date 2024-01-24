@@ -113,11 +113,10 @@ class _CountryCodeWidget extends StatelessWidget {
             )
           : null,
       title: Text(phoneCode),
-      subtitle: Flexible(
-          child: Text(
+      subtitle: Text(
         countryCode.name.common,
         overflow: TextOverflow.ellipsis,
-      )),
+      ),
     );
   }
 }
