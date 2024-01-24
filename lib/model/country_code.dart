@@ -19,8 +19,16 @@ class CountryCode {
     return CountryCode(
       name: CountryName.fromJson(json['name']),
       phoneCode: PhoneCode.fromJson(json['idd']),
-      flagLink: json['flags']?['png'] as String?,
+      flagLink: _flagUrl(json),
     );
+  }
+
+  static String? _flagUrl(Map<String, dynamic> json) {
+    if (json['flags'] == null) return null;
+    if (json['flags']['png'] == null) return null;
+    if (Uri.tryParse(json['flags']['png']) != null) return json['flags']['png'];
+
+    return null;
   }
 
   static List<CountryCode> countryCodesFromJson(String str) =>
