@@ -7,10 +7,12 @@ class CardForm extends StatelessWidget {
     required this.title,
     required this.backgroundColor,
     required this.form,
+    this.isExpandedForm = false,
   });
   final String title;
   final Color backgroundColor;
   final GreatForm form;
+  final bool isExpandedForm;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,9 @@ class CardForm extends StatelessWidget {
             style: const TextStyle(fontSize: 32),
           ),
           Divider(
-            color: backgroundColor.withAlpha(100),
+            color: backgroundColor.withAlpha(10),
           ),
-          Expanded(child: form),
+          if (isExpandedForm) Expanded(child: form) else form,
         ],
       ),
     );
