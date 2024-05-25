@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:great_form/additional_forms/scrollable_form.dart';
 import 'package:great_form/form_field/great_form_field.dart';
 import 'package:great_form/great_form.dart';
 import 'package:great_form/helpers/validator.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Great Form Filed Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -45,14 +46,36 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
           children: [
-            GreatForm(fields: _fields),
-            // Expanded(
-            //     child:
-            //         ScrollableForm.horizontal(builder: (context, index) => _fields[index], childCount: _fields.length)),
+            const Text(
+              "Great Form",
+              style: TextStyle(fontSize: 32),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                  color: Colors.amberAccent,
+                  child: Column(
+                    children: [
+                      const Text(
+                        "Regular Form",
+                        style: TextStyle(fontSize: 24),
+                      ),
+                      const Divider(),
+                      GreatForm(fields: _fields),
+                    ],
+                  )),
+            ),
+            const Text("Scrollable Form"),
+            Expanded(
+              child: ScrollableForm.horizontal(
+                builder: (context, index) => _fields[index],
+                childCount: _fields.length,
+              ),
+            ),
           ],
         ),
       ),

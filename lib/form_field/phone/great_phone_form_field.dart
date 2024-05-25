@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:great_form/model/country_code.dart';
 import 'package:great_form/usecase/get_country_phone_code.dart';
+import 'package:logger/web.dart';
 
 class GreatPhoneFormField extends StatefulWidget {
   const GreatPhoneFormField({super.key, required this.controller});
@@ -31,32 +32,38 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
         initialData: const [],
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Row(
-              children: [
-                InkWell(
-                  onTap: () => showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      useSafeArea: true,
-                      showDragHandle: true,
-                      builder: (_) => _PhonePickerModalSheet(
-                            countryCode: snapshot.requireData,
-                          )),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(20),
+            return SizedBox(
+              height: 10,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () => showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        useSafeArea: true,
+                        showDragHandle: true,
+                        builder: (_) => _PhonePickerModalSheet(
+                              countryCode: snapshot.requireData,
+                            )),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(chosenCode ?? 'Select country'),
                     ),
-                    child: Text(chosenCode ?? 'Select country'),
                   ),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: widget.controller,
-                  ),
-                )
-              ],
+                  const SizedBox(width: 5),
+                  Expanded(
+                    child: TextFormField(
+                      controller: widget.controller,
+                    ),
+                  )
+                ],
+              ),
             );
           } else {
             return const Text('No data found in the api.');
@@ -106,8 +113,9 @@ class _CountryCodeWidget extends StatelessWidget {
           ? Image.network(
               countryCode.flagLink!,
               errorBuilder: (context, error, stackTrace) {
-                print('Image load failed: $error');
-                return const SizedBox();
+                Logger logger = Logger();
+                logger.e('Image load failed: $error');
+                return const Icon(Icons.flag_rounded);
               },
               width: 50,
               height: 100,

@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:great_form/form_field/phone/great_phone_form_field.dart';
 import 'package:great_form/helpers/great_text.dart';
 import 'package:great_form/helpers/validator.dart';
+// TODO: Make a required field
+// TODO: Make a card form with certain amount of pages
 
 class GreatFormField extends StatelessWidget {
   const GreatFormField({
@@ -35,22 +37,25 @@ class GreatFormField extends StatelessWidget {
       assert(controller != null);
     }
 
-    return ConstrainedBox(
-      constraints: BoxConstraints(minWidth: (hintText?.length ?? 1) * 10),
-      child: IntrinsicHeight(
-        child: IntrinsicWidth(
-            child: switch (validator) {
-          Validator.phone => GreatPhoneFormField(controller: controller!),
-          _ => TextFormField(
-              controller: controller,
-              decoration: InputDecoration(label: GreatText(hintText)),
-              autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
-              inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-              validator: validator.validate,
-              maxLines: expand ? null : 1,
-              minLines: 1,
-            ),
-        }),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: (hintText?.length ?? 1) * 10),
+        child: IntrinsicHeight(
+          child: IntrinsicWidth(
+              child: switch (validator) {
+            Validator.phone => GreatPhoneFormField(controller: controller!),
+            _ => TextFormField(
+                controller: controller,
+                decoration: InputDecoration(label: GreatText(hintText)),
+                autovalidateMode: validateOnInput ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
+                inputFormatters: validator == Validator.digitsOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+                validator: validator.validate,
+                maxLines: expand ? null : 1,
+                minLines: 1,
+              ),
+          }),
+        ),
       ),
     );
   }

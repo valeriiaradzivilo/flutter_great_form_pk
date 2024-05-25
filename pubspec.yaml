@@ -4,18 +4,19 @@ version: 0.0.5
 homepage: https://github.com/valeriiaradzivilo/flutter_great_form_pk
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.1.2
+  http: ^1.2.1
+  logger: ^2.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
 
 flutter:
 
