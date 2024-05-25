@@ -1,7 +1,7 @@
 library great_form;
 
 import 'package:flutter/material.dart';
-import 'package:great_form/form_field/great_form_field.dart';
+import 'package:great_form/ui/form_field/great_form_field.dart';
 
 /// [GreatForm] is a shortened version of a basic form with modifiable [gap] and [fields]
 /// Predefined [gap] is 10

@@ -1,9 +1,9 @@
-import 'package:great_form/base/either.dart';
-import 'package:great_form/base/failure.dart';
-import 'package:great_form/base/usecase.dart';
-import 'package:great_form/model/country_code.dart';
-import 'package:great_form/repository/country_repository.dart';
-import 'package:great_form/repository/country_repository_impl.dart';
+import 'package:great_form/data/base/either.dart';
+import 'package:great_form/data/base/failure.dart';
+import 'package:great_form/data/base/usecase.dart';
+import 'package:great_form/data/model/country_code.dart';
+import 'package:great_form/data/repository/country_repository.dart';
+import 'package:great_form/data/repository/country_repository_impl.dart';
 
 class GetCountryPhoneUseCase implements UseCase<List<CountryCode>, int?> {
   final CountryRepository repository = CountryRepositoryImpl();

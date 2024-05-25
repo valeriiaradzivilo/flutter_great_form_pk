@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:great_form/additional_forms/scrollable_form.dart';
-import 'package:great_form/form_field/great_form_field.dart';
-import 'package:great_form/helpers/validator.dart';
+import 'package:great_form/ui/additional_forms/scrollable_form.dart';
+import 'package:great_form/ui/form_field/great_form_field.dart';
+import 'package:great_form/ui/helpers/validator.dart';
 
 void main() {
   testWidgets('GreatFormField renders correctly', (WidgetTester tester) async {

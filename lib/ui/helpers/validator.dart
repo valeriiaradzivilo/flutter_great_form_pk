@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum Validator {
   notEmpty,
   email,
@@ -15,6 +17,12 @@ enum Validator {
         digitsOnly => _digitsOnly(text),
         phone => _digitsOnly(text),
         none => null,
+      };
+
+  TextInputType get keyboardType => switch (this) {
+        phone => TextInputType.phone,
+        digitsOnly => TextInputType.number,
+        _ => TextInputType.text,
       };
 }
 

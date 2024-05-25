@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:great_form/data_source/country_data_source.dart';
-import 'package:great_form/model/country_code.dart';
+import 'package:great_form/data/data_source/country_data_source.dart';
+import 'package:great_form/data/model/country_code.dart';
 import 'package:http/http.dart' as http;
 
 const _baseUrl = 'https://restcountries.com/v3.1/all';

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:great_form/data_source/country_data_source_impl.dart';
-import 'package:great_form/model/country_code.dart';
+import 'package:great_form/data/data_source/country_data_source_impl.dart';
+import 'package:great_form/data/model/country_code.dart';
 
 void main() {
   group('CountryDataSourceImpl', () {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:great_form/additional_forms/scrollable_form.dart';
-import 'package:great_form/form_field/great_form_field.dart';
 import 'package:great_form/great_form.dart';
-import 'package:great_form/helpers/card_form.dart';
-import 'package:great_form/helpers/validator.dart';
+import 'package:great_form/ui/additional_forms/card_form.dart';
+import 'package:great_form/ui/additional_forms/scrollable_form.dart';
+import 'package:great_form/ui/form_field/great_form_field.dart';
+import 'package:great_form/ui/helpers/validator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +37,7 @@ final List<GreatFormField> _fields = [
   ),
   GreatFormField(
     controller: TextEditingController(),
-    hintText: 'phone number',
+    hintText: 'Phone Number',
     validator: Validator.phone,
   ),
 ];
@@ -49,32 +49,33 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const Text(
-                "Great Form",
-                style: TextStyle(fontSize: 32),
-              ),
-              const SizedBox(height: 10),
-              CardForm(
-                title: "Card Form",
-                backgroundColor: Colors.amberAccent,
-                form: GreatForm(fields: _fields),
-              ),
-              Flexible(
-                child: CardForm(
+        appBar: AppBar(
+          title: const Text('Great Form Example'),
+          backgroundColor: Colors.cyan,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                CardForm(
+                  title: "Card Form",
+                  backgroundColor: Colors.amberAccent,
+                  form: GreatForm(fields: _fields),
+                ),
+                CardForm(
                   title: "Scrollable Form",
                   backgroundColor: Colors.blueAccent,
                   form: ScrollableForm.horizontal(
                     builder: (context, index) => _fields[index],
                     childCount: _fields.length,
+                    constraints: const BoxConstraints(maxHeight: 100),
                   ),
-                  isExpandedForm: true,
+                  isExpandedForm: false,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:great_form/model/country_name.dart';
-import 'package:great_form/model/phone_code.dart';
+import 'package:great_form/data/model/country_name.dart';
+import 'package:great_form/data/model/phone_code.dart';
 
 class CountryCode {
   CountryCode({
