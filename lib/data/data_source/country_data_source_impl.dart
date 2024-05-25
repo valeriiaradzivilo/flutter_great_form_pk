@@ -12,6 +12,7 @@ const _fieldFlag = 'flags';
 
 const _fieldSelector = '?fields=';
 
+/// Implementation of [CountryDataSource]
 class CountryDataSourceImpl implements CountryDataSource {
   @override
   Future<List<CountryCode>> getCountryPhone() async {

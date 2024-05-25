@@ -6,6 +6,8 @@ import 'package:great_form/ui/form_field/great_form_field.dart';
 /// [GreatForm] is a shortened version of a basic form with modifiable [gap] and [fields]
 /// Predefined [gap] is 10
 class GreatForm extends StatefulWidget {
+  /// [fields] is the list of fields in a form
+  /// [gap] is the space between the fields
   const GreatForm({super.key, required this.fields, this.gap = 10});
 
   /// Input fields

@@ -5,6 +5,7 @@ import 'package:great_form/data/data_source/country_data_source_impl.dart';
 import 'package:great_form/data/model/country_code.dart';
 import 'package:great_form/data/repository/country_repository.dart';
 
+/// Country repository implementation
 class CountryRepositoryImpl implements CountryRepository {
   final CountryDataSource _dataSource = CountryDataSourceImpl();
 

@@ -3,9 +3,16 @@ import 'package:great_form/data/model/country_code.dart';
 import 'package:great_form/data/usecase/get_country_phone_code.dart';
 import 'package:logger/web.dart';
 
+/// Great phone form field
 class GreatPhoneFormField extends StatefulWidget {
-  const GreatPhoneFormField({super.key, required this.formField});
+  /// Great phone form field constructor
+  const GreatPhoneFormField({super.key, required this.formField, required this.constraints});
+
+  /// [formField] is the form field widget
   final Widget formField;
+
+  /// [constraints] is the constraints of the form field
+  final BoxConstraints constraints;
 
   @override
   State<GreatPhoneFormField> createState() => _GreatPhoneFormFieldState();
@@ -55,7 +62,7 @@ class _GreatPhoneFormFieldState extends State<GreatPhoneFormField> {
                   child: Text(chosenCode ?? 'Select country'),
                 ),
               ),
-              title: ConstrainedBox(constraints: const BoxConstraints(minWidth: 100), child: widget.formField),
+              title: ConstrainedBox(constraints: widget.constraints, child: widget.formField),
             );
           } else {
             return const Text('No data found in the api.');

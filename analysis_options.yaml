@@ -1,4 +1,16 @@
 include: package:flutter_lints/flutter.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+   
+linter:
+  rules:
+    avoid_print: true  # disallows using print function
+    prefer_const_constructors: true  # encourages using const constructors where possible
+    prefer_const_constructors_in_immutables: true  # encourages using const constructors for immutable classes
+    prefer_const_declarations: true  # encourages using const for variable declarations
+    prefer_const_literals_to_create_immutables: true  # encourages using const where possible
+    prefer_final_fields: true  # encourages using final for fields that are not reassigned
+    avoid_relative_lib_imports: true
+    public_member_api_docs: true
+

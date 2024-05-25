@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 
+/// Validator enum
 enum Validator {
+  /// Not empty validator
   notEmpty,
+
+  /// Email validator
   email,
+
+  /// Password validator
   password,
+
+  /// Complex password validator
   passwordComplex,
+
+  /// Digits only validator
   digitsOnly,
+
+  /// Phone validator
   phone,
+
+  /// No validator
   none;
 
+  /// Validate the text
   String? validate(String? text) => switch (this) {
         notEmpty => (text?.isEmpty ?? true) ? 'Do no forget to fill in this field' : null,
         email => _email(text),
@@ -19,6 +34,7 @@ enum Validator {
         none => null,
       };
 
+  /// Get the keyboard type
   TextInputType get keyboardType => switch (this) {
         phone => TextInputType.phone,
         digitsOnly => TextInputType.number,
